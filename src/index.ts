@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser';
 import express, { Request, Response } from 'express';
-import { getItems } from './controllers/itemsController';
+import { getItem } from './controllers/getItem';
+import { getItems } from './controllers/getItems';
 const app = express();
 const router = express.Router();
 
@@ -28,10 +29,12 @@ router.get('/items', async (request, response) => {
   }
 });
 
-router.get('/items/:id/description', (request, response) => {
+router.get('/items/:id/description', async (request, response) => {
   try {
     const { id } = request.params;
-    return response.send({ id });
+    const item = await getItem(id);
+
+    return response.send(item);
   } catch (error) {
     console.warn(`Error on [getItem]`, error);
     return response.status(500).send({

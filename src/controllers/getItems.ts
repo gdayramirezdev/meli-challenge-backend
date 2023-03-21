@@ -1,6 +1,13 @@
 import axios from 'axios';
 import { ApiMercadoLibre } from '../constants';
-import { Data } from '../types';
+import { Autor, Item } from '../types';
+
+export type Data = {
+  autor: Autor;
+  categories: string[];
+  items: Item[];
+};
+
 
 export async function getItems(q: any): Promise<Data> {
   const { data } = await axios(`${ApiMercadoLibre}/sites/MLA/search?q=${q}`, {

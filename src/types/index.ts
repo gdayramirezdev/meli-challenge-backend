@@ -14,10 +14,6 @@ export type Item = {
   picture: string;
   condition: string;
   free_shipping: string;
-};
-
-export type Data = {
-  autor: Autor;
-  categories: string[];
-  items: Item[];
+  sold_quantity?: number,
+  description?: string,
 };

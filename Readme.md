@@ -1,10 +1,11 @@
-# Mercado Libre Challenge
+# Mercado Libre Challenge Back End
+## Getting Started
+> Requerimientos: Node >= 12, Express.
+#### Runs
 
-## DEV Run
-    npm run dev
-
-## Starts
-    npm start
-
-## Build
-    npm run build
+```bash
+  git clone https://github.com/gdayramirezdev/meli-challenge-backend.git
+  cd meli-challenge-backend
+  npm install
+  npm run dev
+```

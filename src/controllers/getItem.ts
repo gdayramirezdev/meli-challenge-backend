@@ -8,15 +8,8 @@ export type Data = {
 };
 
 export async function getItem(id: string): Promise<Data> {
-  const { data: item } = await axios(`${ApiMercadoLibre}/items/${id}`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  });
-
-  const { data: description } = await axios(`${ApiMercadoLibre}/items/${id}/description`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  });
+  const { data: item } = await axios(`${ApiMercadoLibre}/items/${id}`);
+  const { data: description } = await axios(`${ApiMercadoLibre}/items/${id}/description`);
 
   const result = {
     autor: {

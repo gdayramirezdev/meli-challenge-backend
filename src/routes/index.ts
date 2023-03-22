@@ -1,10 +1,10 @@
-import { Router } from 'express';
+import { Request, Response, Router } from 'express';
 import { getItem } from '../controllers/getItem';
 import { getItems } from '../controllers/getItems';
 
 const router = Router();
 
-router.get('/items', async (request, response) => {
+router.get('/items', async (request: Request, response: Response) => {
   try {
     const query = request.query.q;
 
@@ -26,7 +26,7 @@ router.get('/items', async (request, response) => {
   }
 });
 
-router.get('/items/:id', async (request, response) => {
+router.get('/items/:id', async (request: Request, response: Response) => {
   try {
     const { id } = request.params;
     const item = await getItem(id);

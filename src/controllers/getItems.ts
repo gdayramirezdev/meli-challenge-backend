@@ -14,17 +14,25 @@ export async function getItems(q: any): Promise<Data> {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   });
+
   const autor = {
     name: '',
     lastname: '',
   };
 
+  const paths: string[] = [];
+
   const categories = data.filters.find(
     (filter: { id: string }) => filter.id === 'category'
   );
-  const categoriesList = categories?.values?.map(
-    (category: { name: string }) => category.name
+
+  categories?.values?.forEach(
+    (category: { path_from_root: { name: string }[] }) => {
+      const path = category?.path_from_root?.map((path) => path.name);
+      paths.push(...path);
+    }
   );
+
   const items = data.results.map(
     (item: {
       id: string;
@@ -48,5 +56,5 @@ export async function getItems(q: any): Promise<Data> {
       free_shipping: item.shipping.free_shipping,
     })
   );
-  return { autor, categories: categoriesList || [], items };
+  return { autor, categories: paths || [], items };
 }

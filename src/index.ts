@@ -1,9 +1,11 @@
 import bodyParser from 'body-parser';
-import express, { Request, Response } from 'express';
+import express from 'express';
 import { getItem } from './controllers/getItem';
 import { getItems } from './controllers/getItems';
+
 const app = express();
 const router = express.Router();
+const port = 3001;
 
 app.use(bodyParser.json());
 
@@ -29,7 +31,7 @@ router.get('/items', async (request, response) => {
   }
 });
 
-router.get('/items/:id/description', async (request, response) => {
+router.get('/items/:id', async (request, response) => {
   try {
     const { id } = request.params;
     const item = await getItem(id);
@@ -46,6 +48,6 @@ router.get('/items/:id/description', async (request, response) => {
 
 app.use('/api', router);
 
-app.listen(3000, () => {
-  console.log('The application is listening on port 3000!');
+app.listen(port, () => {
+  console.log('The application is listening on port', port);
 });

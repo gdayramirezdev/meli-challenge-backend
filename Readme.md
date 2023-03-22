@@ -1,5 +1,10 @@
 # Mercado Libre Challenge
 
-# DEV Run
-
+## DEV Run
     npm run dev
+
+## Starts
+    npm start
+
+## Build
+    npm run build

@@ -10,7 +10,8 @@ export type Data = {
 
 
 export async function getItems(q: any): Promise<Data> {
-  const { data } = await axios(`${ApiMercadoLibre}/sites/MLA/search?q=${q}&limit=4`, {
+  const limit = 4;
+  const { data } = await axios(`${ApiMercadoLibre}/sites/MLA/search?q=${q}&limit=${limit}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   });
